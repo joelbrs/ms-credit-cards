@@ -11,5 +11,5 @@ import tech.joelf.ms_credit_assessor.models.ClientData;
 public interface ClientResource {
 
     @GetMapping("/{cpf}")
-    public ResponseEntity<ClientData> findByCpf(@PathVariable String cpf);
+    ResponseEntity<ClientData> findByCpf(@PathVariable String cpf);
 }
