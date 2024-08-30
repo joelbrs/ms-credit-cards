@@ -8,10 +8,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import tech.joelf.ms_credit_assessor.models.ClientCard;
+import tech.joelf.ms_credit_assessor.models.CreditCard;
 
 @FeignClient(value = "ms-card")
 public interface CardResource {
 
     @GetMapping(params = "cpf")
     ResponseEntity<List<ClientCard>> findByCpf(@RequestParam("cpf") String cpf);
+
+    @GetMapping(params = "income")
+    ResponseEntity<List<CreditCard>> getCardLessThanEqual(@RequestParam("income") Long income);
 }
