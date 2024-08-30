@@ -22,6 +22,7 @@ public class MsGatewayApplication {
 		return builder.routes()
 				.route(r -> r.path("/clients/**").uri("lb://ms-clients"))
 				.route(r -> r.path("/cards/**").uri("lb://ms-cards"))
+				.route(r -> r.path("/credit-assessor/**").uri("lb://ms-credit-assessor"))
 				.build();
 	}
 }
