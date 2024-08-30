@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 import tech.joelf.ms_credit_assessor.dtos.ClientAssessmentReturnResponse;
 import tech.joelf.ms_credit_assessor.dtos.ClientStatus;
 import tech.joelf.ms_credit_assessor.dtos.DataAssessmentRequest;
+import tech.joelf.ms_credit_assessor.models.EmissionCardData;
+import tech.joelf.ms_credit_assessor.models.ProtocolSolicitationCard;
 import tech.joelf.ms_credit_assessor.services.CreditAssessorService;
 
 @RestController
@@ -31,6 +33,12 @@ public class CreditAssessorController {
     @PostMapping("/assess-client")
     public ResponseEntity<ClientAssessmentReturnResponse> assessClient(@RequestBody DataAssessmentRequest request) {
         return ResponseEntity.ok(creditAssessorService.assessClient(request));
+    }
+
+    @PostMapping("/emit-card")
+    public ResponseEntity<ProtocolSolicitationCard> sendEmissionCard(
+            @RequestBody EmissionCardData data) throws Exception {
+        return ResponseEntity.ok(creditAssessorService.sendEmissionCard(data));
     }
 
     @GetMapping("/status")
